@@ -1,0 +1,32 @@
+<div class="sidebar" [class.expanded]="isExpanded">
+
+    <button class="toggle-btn corner-btn" (click)="toggleSidebar()">
+        <mat-icon>{{ isExpanded ? 'chevron_left' : 'menu' }}</mat-icon>
+    </button>
+
+    <ul class="menu-items">
+        <li *ngFor="let item of menuItems">
+            <a [routerLink]="item.route" *ngIf="!item.children">
+                <mat-icon>{{item.icon}}</mat-icon>
+                <span *ngIf="isExpanded">{{item.label}}</span>
+            </a>
+            <div class="submenu" *ngIf="item.children">
+                <a (click)="toggleSubmenu(item)">
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    <span *ngIf="isExpanded">{{item.label}}</span>
+                    <mat-icon class="expand-icon" *ngIf="isExpanded">
+                        {{item.isOpen ? 'expand_less' : 'expand_more'}}
+                    </mat-icon>
+                </a>
+                <ul *ngIf="item.isOpen && isExpanded">
+                    <li *ngFor="let child of item.children">
+                        <a [routerLink]="child.route">
+                            <mat-icon>{{child.icon}}</mat-icon>
+                            <span>{{child.label}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

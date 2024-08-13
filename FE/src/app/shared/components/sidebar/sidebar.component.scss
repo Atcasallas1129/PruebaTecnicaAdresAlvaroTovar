@@ -1,0 +1,70 @@
+.sidebar {
+    position: relative; // Añade esta línea
+    width: 250px;
+    height: 100vh;
+    background-color: #273656;
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+  
+    &.expanded {
+      width: 250px;
+    }
+  
+    &:not(.expanded) {
+      width: 60px;
+    }
+  }
+  
+  .toggle-btn {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .corner-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    color:#fff;
+  }
+  
+  
+  .menu-items {
+  
+    padding-top: 50px;  // Añade esta línea para dar espacio al botón
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        text-decoration: none;
+        color: #FFF;
+  
+        mat-icon {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  
+  .submenu {
+    >a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding-left: 20px;
+    }
+  }
+  
+  .expand-icon {
+    margin-left: auto;
+  }

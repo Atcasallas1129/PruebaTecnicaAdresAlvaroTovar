@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Opcional: alinea verticalmente el contenido y el botón */
+    padding: 10px;
+}
+
+.btn {
+    /* Estilo del botón */
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

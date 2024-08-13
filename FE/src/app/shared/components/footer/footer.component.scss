@@ -1,0 +1,19 @@
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    border-top: 1px solid #00000035;
+}
+
+.footer-content {
+    max-width: 70%; /* Ajusta según sea necesario */
+}
+
+.footer-image img {
+    max-width: 300px; /* Ajusta el tamaño de la imagen */
+    height: auto;
+}

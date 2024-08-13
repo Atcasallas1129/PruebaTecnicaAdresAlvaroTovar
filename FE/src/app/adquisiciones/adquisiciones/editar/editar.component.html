@@ -1,0 +1,165 @@
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3 class="mb-0">Edición de Adquisición No. {{detalleAdquisicion.adquisicionId}}</h3>
+        <div class="btn-group" role="group">
+            <button class="btn btn-soft-secondary object-info-ico" (click)="eventoCancelarEmit()"
+                title="Cerrar Ventana">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-escape"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8.538 1.02a.5.5 0 1 0-.076.998 6 6 0 1 1-6.445 6.444.5.5 0 0 0-.997.076A7 7 0 1 0 8.538 1.02" />
+                    <path
+                        d="M7.096 7.828a.5.5 0 0 0 .707-.707L2.707 2.025h2.768a.5.5 0 1 0 0-1H1.5a.5.5 0 0 0-.5.5V5.5a.5.5 0 0 0 1 0V2.732z" />
+                </svg></button>
+        </div>
+    </div>
+    <div class="card-body ">
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="proveedor" class="col-form-label titleLabel">Proveedor</label>
+            </div>
+            <div class="col-sm-8">
+                <select id="proveedor" class="form-select" [(ngModel)]="detalleAdquisicion.proveedorId">
+                    <option *ngFor="let opcion of proveedores" [value]="opcion.proveedorId">
+                        {{ opcion.nombre }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="tipoBienServicio" class="col-form-label titleLabel">Tipo Bien / Servicio</label>
+            </div>
+            <div class="col-sm-8">
+                <select id="tipoBienServicio" class="form-select" [(ngModel)]="detalleAdquisicion.tipoBienServicio">
+                    <option *ngFor="let opcion of servicios" [value]="opcion.tipoServicioId">
+                        {{ opcion.tipoServicioNombre }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="cantidad" class="col-form-label titleLabel">cantidad</label>
+            </div>
+            <div class="col-sm-8">
+                <input  class="form-control" type="number" min="0" [(ngModel)]="detalleAdquisicion.cantidad">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="presupuesto" class="col-form-label titleLabel">Presupuesto</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" type="number" min="0" [(ngModel)]="detalleAdquisicion.presupuesto">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="valorUnitario" class="col-form-label titleLabel">Valor Unitario</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" type="number" min="0" [(ngModel)]="detalleAdquisicion.valorUnitario">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="fechaAdquisicion" class="col-form-label titleLabel">Fecha adquisición</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" class="form-control" type="date" [(ngModel)]="detalleAdquisicion.fechaAdquisicion">
+            </div>
+        </div>
+
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="unidadAdministrativa" class="col-form-label titleLabel">Unidad Administrativa</label>
+            </div>
+            <div class="col-sm-8">
+                <select id="unidadAdministrativa" class="form-select" [(ngModel)]="detalleAdquisicion.unidadAdministrativaId">
+                    <option *ngFor="let opcion of unidadAdministrativa" [value]="opcion.unidadAdministrativaId">
+                        {{ opcion.nombre }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <hr>
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Documentación de la adquisición</h3>
+            <div class="btn-group" role="group">
+                <button class="btn btn-secondary object-info-ico" (click)="almacenarDocumentacion()"
+                    title="Almacenar Documentación"><i class="bi bi-save"></i></button>
+            </div>
+        </div>
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="descripcionDoc" class="col-form-label titleLabel">Descripción:</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" maxlength="255" [(ngModel)]="documentacion.descripcion">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center itemForm">
+            <div class="col-sm-4">
+                <label for="detalleDoc" class="col-form-label titleLabel">Detalle:</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" maxlength="255" [(ngModel)]="documentacion.detalles">
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 15px;">
+            <table class="table table-striped table-bordered table-hover" style="width: 95%; margin: 0 auto;">
+                <thead>
+                    <tr>
+                        <th style="width: 15%; text-align: center;">Descripcion</th>
+                        <th style="width: 80; text-align: center;">Detalle</th>
+                    </tr>
+                </thead>
+                <tbody class=".table-hover">
+                    <tr *ngIf="adquisicionCU.documentacion?.length == 0">
+                        <td colspan="2" style="text-align: center;">No existe documentación registrada</td>
+                    </tr>
+                    <tr *ngFor="let doc of adquisicionCU.documentacion">
+                        <td style="width: 40%;" [title]="doc.descripcion">
+                            {{ doc.descripcion.length > 50 ?
+                            (doc.descripcion | slice:0:50) + '...' :
+                            doc.descripcion }}
+                        </td>
+                        <td style="width: 40%;" [title]="doc.detalles">
+                            {{ doc.detalles.length > 50 ?
+                            (doc.detalles | slice:0:50) + '...' :
+                            doc.detalles }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>        
+        <div class="card-footer d-flex justify-content-center" style="margin-top: 15px; gap: 10px;">
+            <button type="button" class="btn btn-primary" (click)="onAlmacenarAdquisicion()">Almacenar</button>
+            <button type="button" class="btn btn-secondary" (click)="eventoCancelarEmit()">Cancelar</button>
+        </div>
+    </div>
+    <div class="card-body" style="margin-top: 15px;">
+        <hr>
+
+        <div class="accordion accordion-flush" id="acordionDocumentos">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Historial de eventos de la adquisicion
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#acordionDocumentos">
+                    <div class="accordion-body">
+                        <app-historial-adquisicion [idAdquisicionSelect]="detalleAdquisicion.adquisicionId"></app-historial-adquisicion>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

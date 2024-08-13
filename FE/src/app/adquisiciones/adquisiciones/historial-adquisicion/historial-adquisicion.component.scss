@@ -1,0 +1,5 @@
+.table-container {
+    width: 100%; /* Puedes ajustar el ancho según sea necesario */
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    -webkit-overflow-scrolling: touch; /* Mejora la experiencia de desplazamiento en dispositivos táctiles */
+}
